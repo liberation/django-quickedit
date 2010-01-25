@@ -4,6 +4,7 @@ from django import template
 
 register = template.Library()
 
+@register.tag(name="editable")
 def do_editable(parser, token):
     """
     Make node editable for admin
@@ -16,7 +17,7 @@ def do_editable(parser, token):
 
         {% editable foo_object %}
     """
-    bits = token.contents.split()    
+    bits = token.split_contents()    
     
     nodelist = parser.parse(('endeditable',))
     parser.delete_first_token()
@@ -38,5 +39,3 @@ class EditableNode(template.Node):
         output = '<span class="editable" id="%s.%s.%i.%s">' % (obj.__class__.__name__, obj._meta.app_label, obj.id, self.var)
         output += self.nodelist.render(context) + '</span>'
         return output
-
-register.tag('editable', do_editable)

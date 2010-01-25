@@ -1,6 +1,5 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponse
-from models import TestInlineModel
 from libe.models import *
 from django.db.models import get_model
 from django.contrib import admin
@@ -12,7 +11,7 @@ def get_widget(request, object_def):
     obj = get_object_or_404(omodel, pk=int(oid))
     field = admin.site._registry[omodel].get_form(oid).base_fields[ofield]
     
-    return HttpResponse('<form action="/django_inline/change/'+object_def+'/" method="post" id="django_inline" onsubmit="return false;">' + field.widget.render('data', getattr(obj, ofield)) \
+    return HttpResponse('<form action="/django_quickedit/change/'+object_def+'/" method="post" id="django_quickedit" onsubmit="return false;">' + field.widget.render('data', getattr(obj, ofield)) \
                        + '</form>')
     #TODO @ybon put URL in settings
 def change(request, object_def):
@@ -24,8 +23,3 @@ def change(request, object_def):
         setattr(obj, ofield, request.POST['data'])
         obj.save()
     return HttpResponse(getattr(obj, ofield))
-
-def test_view(request):
-    test_object = TestInlineModel.objects.get(pk=1)
-    return render_to_response('inline_test.html', RequestContext(request, {'test_object': test_object}))
-    

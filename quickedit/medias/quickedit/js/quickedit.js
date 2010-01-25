@@ -1,4 +1,4 @@
-var quick_edit_mode = false;
+var quickedit_mode = false;
 function launch_dialog()
 {
     //Can't user "this" in event function
@@ -21,7 +21,7 @@ function launch_dialog()
     		}
     	};
     	//Submit form by ajax
-    	$('#django_inline').ajaxSubmit(options);
+    	$('#django_quickedit').ajaxSubmit(options);
     	return false;
     }
     var remove_dialog = function()
@@ -29,20 +29,20 @@ function launch_dialog()
 //    		$("#dialog").dialog('close');
 //    		$("#dialog").dialog('destroy');
         $("#dialog").remove();
-//    		quick_edit_mode = false;   
-        toggle_quick_edit_mode({mode: false});
+//    		quickedit_mode = false;   
+        toggle_quickedit_mode({mode: false});
     }
     if($('#dialog').length != 0)
         $("#dialog").remove();
     //Create a div and load form from server
     //Fonction callback is adding submit event
-    $('<div>').attr('id','dialog').appendTo("body").load('/django_inline/widget/' + $(this).attr('id'), {}, function() {
-            $('#django_inline').submit(form_submit)
+    $('<div>').attr('id','dialog').appendTo("body").load('/django_quickedit/widget/' + $(this).attr('id'), {}, function() {
+            $('#django_quickedit').submit(form_submit)
         });
 	$("#dialog").dialog({
         bgiframe: true,
         autoOpen: true,
-        dialogClass: 'quick_edit_box',
+        dialogClass: 'quickedit_box',
         minHeight: 100,
         title: "Vit'édit",
         resizable: true,
@@ -52,7 +52,7 @@ function launch_dialog()
         position: [pos_left, pos_top],
         buttons: {
             'Ok': function() {
-                $('#django_inline').submit();
+                $('#django_quickedit').submit();
             },
             Cancel: function(){
                 remove_dialog()    
@@ -67,12 +67,12 @@ function launch_dialog()
 *   Activate the quick edit
 *   @param  target   jquery queryset to consider
 */
-function activate_quick_edit(options)
+function activate_quickedit(options)
 {
     options = $.extend({
         target:  $('.editable')
         }, options || {});
-    if(!quick_edit_mode)
+    if(!quickedit_mode)
     {
         options.target.unbind('click');
         options.target.parents('a').unbind("click");
@@ -96,9 +96,9 @@ function activate_quick_edit(options)
         }
         );*/
 	}
-//    quick_edit_mode = !quick_edit_mode;
+//    quickedit_mode = !quickedit_mode;
 }
-function toggle_quick_edit_mode(options)
+function toggle_quickedit_mode(options)
 {
     options = $.extend({
         mode:  true
@@ -107,16 +107,16 @@ function toggle_quick_edit_mode(options)
     {
         options.mode = true;
     }
-    quick_edit_mode = options.mode;
+    quickedit_mode = options.mode;
 }
-function django_inline()
+function django_quickedit()
 {
-//    django_inline_toggle();
+//    django_quickedit_toggle();
     $(document).keypress(function(e)
     {
     	if(e.ctrlKey && e.which==13)
     	{
-    	   activate_quick_edit();
+    	   activate_quickedit();
     	}
     });
 }
