@@ -1,0 +1,53 @@
+.active_edit:hover
+{
+    background-color: #86A0E0;
+    cursor: hand;
+}
+.ui-dialog
+{
+    background-color: #c5c5c5;
+    border: 1px solid #ddd;
+    position: absolute;
+}
+.ui-dialog-titlebar
+{
+    background: url(/medias/cms/images/cms_toolbar.png) repeat-x;
+    height: 20px;
+    line-height: 20px;
+    cursor: move;
+    padding:0.5em 0.3em 0.3em 1em;
+    position:relative;
+}
+
+.ui-dialog-titlebar-close
+{
+    background: transparent url(/medias/cms/images/cms_toolbar.png) no-repeat scroll -210px -158px;
+    text-indent: -99999px;
+}
+.ui-dialog .ui-dialog-buttonpane button
+{
+    cursor:pointer;
+    float:right;
+    line-height:1.4em;
+    margin:0.5em 0.4em 0.5em 0;
+    overflow:visible;
+    padding:0.2em 0.6em 0.3em;
+    width:auto;
+}
+.ui-dialog .ui-dialog-titlebar-close
+{
+    height:18px;
+    margin:-10px 0 0;
+    padding:1px;
+    position:absolute;
+    right:0.3em;
+    top:50%;
+    width:19px;
+}
+.ui-widget-overlay
+{
+    background: #666666 url(http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/images/ui-bg_diagonals-thick_20_666666_40x40.png) repeat scroll 50% 50%;
+    opacity: 0.5;
+    position:absolute;
+    z-index: 100000;
+}
