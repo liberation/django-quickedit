@@ -1,13 +1,14 @@
 .active_edit:hover
 {
-    background-color: #86A0E0;
+    background-color: #aabbcc;
     cursor: hand;
 }
 .ui-dialog
 {
-    background-color: #c5c5c5;
+    background-color: #e2e2e2;
     border: 1px solid #ddd;
     position: absolute;
+    padding: 2px;
 }
 .ui-dialog-titlebar
 {
@@ -17,6 +18,7 @@
     cursor: move;
     padding:0.5em 0.3em 0.3em 1em;
     position:relative;
+    border: 1px solid #bbb;
 }
 
 .ui-dialog-titlebar-close
@@ -33,6 +35,12 @@
     overflow:visible;
     padding:0.2em 0.6em 0.3em;
     width:auto;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+.ui-dialog .ui-dialog-buttonpane button:hover
+{
+    background-color: #999;
 }
 .ui-dialog .ui-dialog-titlebar-close
 {
@@ -42,12 +50,32 @@
     position:absolute;
     right:0.3em;
     top:50%;
-    width:19px;
+    width:10px;
+}
+.ui-dialog .ui-dialog-titlebar-close:hover
+{
+    background-position: -210px -188px;
 }
 .ui-widget-overlay
 {
-    background: #666666 url(http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/images/ui-bg_diagonals-thick_20_666666_40x40.png) repeat scroll 50% 50%;
+//    background: #666666 url(http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/images/ui-bg_diagonals-thick_20_666666_40x40.png) repeat scroll 50% 50%;
     opacity: 0.5;
     position:absolute;
     z-index: 100000;
+    left: 0;
+    top: 0;
+    background-color: #666;
+}
+
+.ui-dialog input[type="text"]
+{
+    padding:0.4em;
+    width:92%;    
+}
+.ui-dialog .ui-dialog-content
+{
+    background:transparent none repeat scroll 0 0;
+    border:0 none;
+    overflow:auto;
+    padding:5px 0;
 }

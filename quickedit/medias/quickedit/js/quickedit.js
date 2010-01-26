@@ -5,10 +5,12 @@ function launch_dialog()
     var el = $(this);
     //Define the position of the block
     var offset = $(this).offset();
-    var scroll_top = $('body').scrollTop();
-    var scroll_left = $('body').scrollLeft();
+    var scroll_top = $(window).scrollTop();
+    var scroll_left = $(window).scrollLeft();
     var pos_left = offset.left - scroll_left;
     var pos_top = offset.top - scroll_top;
+    //Must be an option
+    var el_width = $(this).width() > 200 ? $(this).width() : 200;
     //Function for submit event
     var form_submit = function()
     {
@@ -31,6 +33,7 @@ function launch_dialog()
         $("#dialog").remove();
 //    		quickedit_mode = false;   
         toggle_quickedit_mode({mode: false});
+        manage_quickedit();
     }
     if($('#dialog').length != 0)
         $("#dialog").remove();
@@ -44,10 +47,11 @@ function launch_dialog()
         autoOpen: true,
         dialogClass: 'quickedit_box',
         minHeight: 100,
+        width: el_width,
         title: "Vit'édit",
         resizable: true,
         zindex: 10000,
-//        modal: true,
+        modal: true,
         stack: true,
         position: [pos_left, pos_top],
         buttons: {
@@ -67,7 +71,7 @@ function launch_dialog()
 *   Activate the quick edit
 *   @param  target   jquery queryset to consider
 */
-function activate_quickedit(options)
+function manage_quickedit(options)
 {
     options = $.extend({
         target:  $('.editable')
@@ -116,7 +120,7 @@ function django_quickedit()
     {
     	if(e.ctrlKey && e.which==13)
     	{
-    	   activate_quickedit();
+    	   manage_quickedit();
     	}
     });
 }
