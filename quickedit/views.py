@@ -5,7 +5,6 @@ from django.contrib import admin
 from django.template import RequestContext
 
 from libe.models import *
-from libe.quickedit_admin import *
 #Article.libe.3.call_title
 def get_widget(request, object_def):
     oclass, oapp, oid, ofield = object_def.split('.')#TODO @ybon put symbol in settings
