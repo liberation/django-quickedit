@@ -36,6 +36,6 @@ class EditableNode(template.Node):
         obj = self.object.resolve(context)
         if not context['user'].has_perm('%s.can_edit' % obj.__class__.__name__):
             return self.nodelist.render(context);
-        output = '<span class="editable" id="%s.%s.%i.%s">' % (obj.__class__.__name__, obj._meta.app_label, obj.id, self.var)
+        output = '<span class="editable" id="%s|%s|%i|%s">' % (obj.__class__.__name__, obj._meta.app_label, obj.id, self.var)
         output += self.nodelist.render(context) + '</span>'
         return output

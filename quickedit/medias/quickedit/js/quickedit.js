@@ -39,7 +39,7 @@ function launch_dialog()
         $("#dialog").remove();
     //Create a div and load form from server
     //Fonction callback is adding submit event
-    $('<div>').attr('id','dialog').appendTo("body").load('/django_quickedit/widget/' + $(this).attr('id'), {}, function() {
+    $('<div>').attr('id','dialog').appendTo("body").load('/quickedit/widget/' + $(this).attr('id'), {}, function() {
             $('#django_quickedit').submit(form_submit)
         });
 	$("#dialog").dialog({
